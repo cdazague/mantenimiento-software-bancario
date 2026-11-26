@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prototipo académico de canal digital bancario.">
+  <title>Banco Digital | Prototipo académico</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Inicio Banco Digital"><span class="brand-mark">B</span> banco<span>digital</span></a>
+    <span class="prototype-tag">PROTOTIPO ACADÉMICO</span>
+  </header>
+
+  <main>
+    <section id="login-screen" class="login-wrap">
+      <div class="login-card">
+        <div class="brand large"><span class="brand-mark">B</span> banco<span>digital</span></div>
+        <p class="eyebrow">TU BANCO, MÁS CERCA</p>
+        <h1>Bienvenido a tu banca digital</h1>
+        <p class="muted">Ingresa para explorar las funcionalidades de este prototipo.</p>
+        <form id="login-form">
+          <label for="username">Nombre de usuario</label>
+          <input id="username" type="text" placeholder="Por ejemplo: estudiante" autocomplete="off" required>
+          <label for="demo-password">Clave de demostración</label>
+          <input id="demo-password" type="password" placeholder="Escribe cualquier clave" required>
+          <button class="btn primary full" type="submit">Ingresar de forma simulada</button>
+        </form>
+        <p class="hint">Puedes escribir cualquier usuario y clave. No uses información real.</p>
+      </div>
+      <div class="login-aside">
+        <div class="circle circle-one"></div><div class="circle circle-two"></div>
+        <p class="eyebrow light">BANCA DIGITAL</p>
+        <h2>Administra tu dinero de manera sencilla.</h2>
+        <p>Consulta, organiza y conoce las operaciones disponibles en un entorno de demostración.</p>
+      </div>
+    </section>
+
+    <section id="app-screen" class="app-layout hidden">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">B</span> banco<span>digital</span></div>
+        <p class="side-label">MENÚ PRINCIPAL</p>
+        <button class="nav-item active" data-view="dashboard">▦ <span>Resumen</span></button>
+        <button class="nav-item" data-view="transfer">⇄ <span>Transferencias</span></button>
+        <button class="nav-item" data-view="payments">▤ <span>Pago de servicios</span></button>
+        <button class="nav-item" data-view="history">◷ <span>Movimientos</span></button>
+        <div class="sidebar-bottom">
+          <p class="demo-note">Entorno de prueba<br><strong>Sin operaciones reales</strong></p>
+          <button id="logout-btn" class="nav-item logout">↪ <span>Cerrar sesión</span></button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <div class="mobile-head"><span class="brand"><span class="brand-mark">B</span> banco<span>digital</span></span><button id="mobile-logout" class="text-btn">Salir</button></div>
+        <header class="welcome">
+          <div><p class="eyebrow">CANAL DIGITAL</p><h1 id="welcome-title">Hola, estudiante</h1><p class="muted">Este es el resumen de tu cuenta de demostración.</p></div>
+          <span class="avatar">E</span>
+        </header>
+
+        <section id="dashboard-view" class="view">
+          <div class="balance-card">
+            <div><p class="balance-label">SALDO DISPONIBLE SIMULADO</p><p id="balance" class="balance-value">$ 2.500.000</p><p class="balance-foot">Cuenta de ahorros •••• 2026</p></div>
+            <span class="balance-icon">▤</span>
+          </div>
+          <div class="section-heading"><div><p class="eyebrow">ACCESOS RÁPIDOS</p><h2>¿Qué deseas hacer?</h2></div></div>
+          <div class="quick-grid">
+            <button class="quick-card" data-go="transfer"><span class="quick-icon">⇄</span><strong>Transferir</strong><small>Simular envío de dinero</small></button>
+            <button class="quick-card" data-go="payments"><span class="quick-icon">▤</span><strong>Pagar servicios</strong><small>Registrar un pago de prueba</small></button>
+            <button class="quick-card" data-go="history"><span class="quick-icon">◷</span><strong>Movimientos</strong><small>Consultar operaciones</small></button>
+          </div>
+          <div class="section-heading"><div><p class="eyebrow">ACTIVIDAD RECIENTE</p><h2>Últimos movimientos</h2></div><button class="text-btn" data-go="history">Ver todos</button></div>
+          <div id="recent-list" class="movement-list"></div>
+        </section>
+
+        <section id="transfer-view" class="view hidden">
+          <div class="section-heading"><div><p class="eyebrow">OPERACIONES</p><h2>Transferencias</h2><p class="muted">Registra una transferencia ficticia para probar el sistema.</p></div></div>
+          <form id="transfer-form" class="form-card">
+            <label for="recipient">Nombre del destinatario</label><input id="recipient" required placeholder="Ej. María Pérez">
+            <label for="account">Cuenta de destino ficticia</label><input id="account" required placeholder="Ej. 000123456">
+            <label for="transfer-amount">Valor a transferir (COP)</label><input id="transfer-amount" type="number" min="1" step="1000" required placeholder="Ej. 50000">
+            <label for="transfer-note">Descripción</label><input id="transfer-note" placeholder="Ej. Pago compartido">
+            <button class="btn primary" type="submit">Simular transferencia</button>
+            <p class="hint">La operación solo modifica los datos temporales de esta demostración.</p>
+          </form>
+        </section>
+
+        <section id="payments-view" class="view hidden">
+          <div class="section-heading"><div><p class="eyebrow">OPERACIONES</p><h2>Pago de servicios</h2><p class="muted">Registra el pago ficticio de un servicio.</p></div></div>
+          <form id="payment-form" class="form-card">
+            <label for="service">Tipo de servicio</label>
+            <select id="service" required><option value="">Selecciona un servicio</option><option>Agua</option><option>Energía</option><option>Gas</option><option>Internet</option><option>Telefonía</option></select>
+            <label for="reference">Referencia de pago ficticia</label><input id="reference" required placeholder="Ej. REF-2026-001">
+            <label for="payment-amount">Valor a pagar (COP)</label><input id="payment-amount" type="number" min="1" step="1000" required placeholder="Ej. 85000">
+            <button class="btn primary" type="submit">Simular pago</button>
+            <p class="hint">No se realiza ningún pago a empresas de servicios.</p>
+          </form>
+        </section>
+
+        <section id="history-view" class="view hidden">
+          <div class="section-heading"><div><p class="eyebrow">CONSULTAS</p><h2>Historial de movimientos</h2><p class="muted">Operaciones registradas durante esta sesión.</p></div></div>
+          <div id="history-list" class="movement-list"></div>
+        </section>
+        <footer class="footer">Prototipo académico de mantenimiento de software bancario · No corresponde a una entidad financiera real.</footer>
+      </div>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>
